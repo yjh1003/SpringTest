@@ -10,18 +10,52 @@
  			`seller`
  		(
  			`nickname`
- 			, `temperature`
  			, `profileImage`
+ 			, `temperature`
   			, `createdAt`
   			, `updatedAt`
  		)
  		VALUE
  		(
  			#{nickname}
- 			, #{temperature}
  			, #{profileImage}
+ 			, #{temperature}
  			, now()
  			, now()
  		)
  	</insert>
+ 	
+ 	<select id="selectLastSeller" resultType="com.yjh.test.jsp.model.Seller">
+ 		
+ 		SELECT
+ 		    `id`
+ 		 	, `nickname`
+ 			, `profileImage`
+ 			, `temperature`
+  			, `createdAt`
+  			, `updatedAt`
+ 		FROM
+ 			`seller`
+ 		ORDER BY
+ 			`id` DESC
+ 		LIMIT
+ 			1
+ 			
+ 	</select>
+ 	
+ 	<select id="selectSeller" parameterType="int" 
+ 	resultType="com.yjh.test.jsp.model.Seller">
+ 	 		SELECT
+ 		    `id`
+ 		 	, `nickname`
+ 			, `profileImage`
+ 			, `temperature`
+  			, `createdAt`
+  			, `updatedAt`
+ 		FROM
+ 			`seller`
+ 		WHERE
+ 			`id`= #{id}
+ 				
+ 	</select>
  </mapper>
