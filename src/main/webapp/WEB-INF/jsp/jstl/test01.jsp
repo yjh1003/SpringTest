@@ -8,10 +8,13 @@
 <title>JSTL Core 라이브러리1</title>
 </head>
 <body>
-	<h2> 1. JSTL Core 변수 </h2>
-	<c:set var="number1" value="36"/>
-	<c:set var="number2">3</c:set>
 	
+	<h2>JSTL 코어 라이브러리</h2>
+
+	<c:set var="number1" value="36"/>
+	<c:set var="number2" value="3"/>
+	
+	<h2> 1. JSTL Core 변수 </h2>
 	<h4> 첫번째 숫자 : ${number1 } </h4>
 	<h4> 두번째 숫자 : ${number2 } </h4>
 	
@@ -22,11 +25,18 @@
 	<h4>나누기 : ${number1 / number2}</h4>
 
 	<h2> 3. JSTL core out</h2>
-	<c:out value="<title>core out</title>" escapeXml="true" />
+	<c:out value="<title>core out</title>" />
 
 	<h2> 4. JSTL core if</h2>
-	<c:if test="${number1 + number2 / 2 > 10}">
-		<%--<h1>${number1 + number2 / 2}</h1> --%>
+	<%-- double avarage = (number1 + number2) / 2 --%>
+	<c:set var="average" value="${(number1 + number2) / 2 }" />
+	
+	<c:if test="${average >= 10 }" >
+		<h1>${average }</h1>
+	</c:if>
+	
+	<c:if test="${average < 10 }" >
+		<h3>${average }</h3>
 	</c:if>
 	
 	<h2> 5. JSTL core if</h2>
