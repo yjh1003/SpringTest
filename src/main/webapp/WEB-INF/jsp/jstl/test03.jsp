@@ -52,7 +52,7 @@
 				<td>${card.store }</td>
 				<td><fmt:formatNumber value="${card.pay }" type="currency" /></td>
 				<fmt:parseDate value="${card.date }" pattern="yyyy-MM-dd" var="usedate"/>
-				<td><fmt:formatDate value="${usedate }" pattern="yyyy년 MM월 dd일"/></td>
+				<td><fmt:formatDate value="${usedate }" pattern="yyyy년 M월 d일"/></td>
 				<td>${card.installment }</td>
 			</tr>
 			</c:forEach>

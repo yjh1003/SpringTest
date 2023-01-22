@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<h1>공인중개사 추가</h1>
-		<form method="get" action="jsp/realtor/add">
+		<form method="get" action="/jsp/realtor/add">
 			<label>상호명</label><input type="text" class="form-control col-6" name="office"> <br>
 			<label>전화번호</label><input type="text" class="form-control col-6" name="phoneNumeber"> <br>
 			<label>주소</label><input type="text" class="form-control col-6" name="address"> <br>
