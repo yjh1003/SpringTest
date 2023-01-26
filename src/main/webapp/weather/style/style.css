@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+}
+
+
+.contents {
+	height:700px;
+}
+
+.contents > .main-menu {
+	width:250px;
+	height:700px;
+}
+
+.contents > .main-contents {
+	width:950px;
+	height:700px;
+}
+
+footer > .Logo {
+	width:250px;
+	height:100px;
+}
+
+footer > .copyright {
+	width:950px;
+	height:100px;
+}
