@@ -34,7 +34,6 @@ public class weatherHistoryController {
 	}
 	
 	@GetMapping("/add")
-	@ResponseBody
 	public String addWeather(
 			@DateTimeFormat(pattern="yyyy년 M월 d일")
 			@RequestParam("date") Date date
