@@ -46,4 +46,12 @@
   			`url` = #{url}
   	
   	</select>
+  	
+  	<delete id="deleteFavorite" parameterType="int">
+  		DELETE FROM
+  			`favorites`
+  		WHERE
+  			`id` = #{id}
+  		
+  	</delete>
   </mapper>
