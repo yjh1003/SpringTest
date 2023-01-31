@@ -36,4 +36,14 @@
   			, now()
   		)
   	</insert>
+  	
+  	<select id="selectCountUrl" parameterType="String" resultType="int">
+  		SELECT
+  			count(1)
+  		FROM
+  			`favorites`
+  		WHERE
+  			`url` = #{url}
+  	
+  	</select>
   </mapper>

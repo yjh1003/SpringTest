@@ -19,12 +19,54 @@
 		<input type="text" class="form-control" id="nameInput"><br>
 		
 		<label class="mt-3">주소</label>
-		<input type="text" class="form-control" id="urlInput"><br>
+		<div class="d-flex">
+			<input type="text" class="form-control" id="urlInput"><br>
+			<button type="button" id="duplicateBtn" class="btn btn-info">중복확인</button><br>
+		</div>
 		<button type="button" id="addBtn" class="btn btn-success btn-block mt-3">추가</button>
 	</div>
 
 	<script>
 		$(document).ready(function() {
+			
+			
+			$("#duplicateBtn").on("click", function() {
+				let url = $("#urlInput").val();
+				if(url == "") {
+					alert("주소를 입력하세요!");
+					return ;
+				}
+				
+				// https://, http://
+				// http 로 시작하지 않고 https로 시작하지 않으면
+				// if(!url.startsWith("http://") && !url.startsWith("https://")) {
+				if(!(url.startsWith("http://") || url.startsWith("https://"))) {
+					alert("주소 형식이 잘못되었습니다.");
+					return;
+					
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/ajax/favorite/is_duplicate_url"
+					, data:{"url":url}
+					, success:function(data) {
+											
+						if(data.is_duplicate_url) {
+							alert("중복된 url입니다.");
+						} else {
+							alert("사용 가능한 url입니다.");
+						}
+					
+					  }
+					, error:function() {
+						alert("url 중복확인 에러")
+					}
+				});
+				
+			});
+				
+			
 			$("#addBtn").on("click", function() {
 				let name = $("#nameInput").val();
 				let url = $("#urlInput").val();
@@ -39,26 +81,38 @@
 					return;
 				}
 				
-				$.ajax({
-					type:"post"
-					, url:"/ajax/favorite/add"
-					, data:{"name":name, "url":url}
-					, success:function(data) {
-						// 성공시 : {"result":"success"}
-						// 실패시 : {"result":"fail"}
-						if(data.result == "success") {
-							location.href = "/ajax/favorite/list";
-						} else {
-							alert("추가 실패")
-						}
-					}
-					, error:function() {
-						alert("추가 에러");
-					}
-				});
 				
+				// https://, http://
+				// http 로 시작하지 않고 https로 시작하지 않으면
+				// if(!url.startsWith("http://") && !url.startsWith("https://")) {
+				if(!(url.startsWith("http://") || url.startsWith("https://"))) {
+					alert("주소 형식이 잘못되었습니다.");
+					return ;
+				}
+			
+		
+			
+			$.ajax({
+				type:"post"
+				, url:"/ajax/favorite/add"
+				, data:{"name":name, "url":url}
+				, success:function(data) {
+					// 성공시 : {"result":"success"}
+					// 실패시 : {"result":"fail"}
+					if(data.result == "success") {
+						location.href = "/ajax/favorite/list";
+					} else {
+						alert("추가 실패")
+					}
+				}
+				, error:function() {
+					alert("추가 에러");
+				}
 			});
+				
 		});
+			
+	});
 	</script>
 </body>
 </html>
