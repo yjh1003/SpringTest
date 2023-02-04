@@ -30,9 +30,17 @@ public class BookingBO {
 		
 	}
 	
+	public Booking findBooking(String name, String phoneNumber) {
+		
+		return bookingDAO.selectBookingByNamePhoneNumber(name, phoneNumber);
+		
+	}
+	
+	
 	public int deleteBooking(int id) {
 		
 		return bookingDAO.deleteBooking(id);
 	}
+	
 	
 }
